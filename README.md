@@ -19,3 +19,6 @@ if everything is fine you can get certificate.
 
 ![image](https://github.com/user-attachments/assets/b5ff415e-4c3f-4fe8-8a8d-56ea01b78c12)
 
+you can use harbor with your registry, outside and inside cluster 
+
+![image](https://github.com/user-attachments/assets/be6c9d25-b11b-423b-9bf5-bcc5feaaab09)
