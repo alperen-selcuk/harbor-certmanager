@@ -14,3 +14,8 @@ helm repo add harbor https://helm.goharbor.io
 helm repo update
 helm install harbor harbor/harbor -f values.yaml -n harbor --create-namespace
 ```
+
+if everything is fine you can get certificate.
+
+![image](https://github.com/user-attachments/assets/b5ff415e-4c3f-4fe8-8a8d-56ea01b78c12)
+
