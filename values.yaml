@@ -1,0 +1,65 @@
+expose:
+  type: ingress
+  tls:
+    enabled: true
+    certSource: auto
+    auto:
+      commonName: registry.kubernetes.technology
+  ingress:
+    hosts:
+      core: registry.kubernetes.technology
+      notary: registry.kubernetes.technology
+    className: nginx
+    annotations:
+      nginx.ingress.kubernetes.io/proxy-body-size: "0"
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+externalURL: https://registry.kubernetes.technology
+
+harborAdminPassword: "Harbor@12345"
+
+#eget storageclass varsa burasi kullanilacak.
+#persistence:
+#  enabled: true
+#  resourcePolicy: "keep"
+#  persistentVolumeClaim:
+#    registry:
+#      storageClass: "standard"
+#      accessMode: ReadWriteOnce
+#      size: 40Gi
+#    jobservice:
+#      jobLog:
+#        storageClass: "standard"
+#    database:
+#      storageClass: "standard"
+#    redis:
+#      storageClass: "standard"
+
+persistence:
+  enabled: true
+  resourcePolicy: "keep"
+  persistentVolume:
+    registry:
+      existingClaim: ""
+      hostPath: /data/harbor/registry
+      accessMode: ReadWriteOnce
+      size: 10Gi
+    chartmuseum:
+      hostPath: /data/harbor/chartmuseum
+      accessMode: ReadWriteOnce
+      size: 1Gi
+    jobservice:
+      hostPath: /data/harbor/jobservice
+      accessMode: ReadWriteOnce
+      size: 1Gi
+    database:
+      hostPath: /data/harbor/database
+      accessMode: ReadWriteOnce
+      size: 5Gi
+    redis:
+      hostPath: /data/harbor/redis
+      accessMode: ReadWriteOnce
+      size: 1Gi
+    trivy:
+      hostPath: /data/harbor/trivy
+      accessMode: ReadWriteOnce
+      size: 1Gi
